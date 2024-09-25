@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Home.module.scss";
 import SliderWithNavigation from "../../components/HomeComponents/SliderWithNavigation";
 import { Link } from "react-router-dom";
@@ -7,6 +7,7 @@ import { Columns } from "../../components/HomeComponents/HomeColumns";
 import { Advices } from "../../components/HomeComponents/Advices";
 import { Categories } from "../../components/HomeComponents/Categories";
 import { LastUpdates } from "../../components/HomeComponents/lastUpdates";
+import Search from "../../components/Search/Search";
 
 const carouselItem = {
   img: "https://remanga.org/media/titles/discarded-garbage-is-not-picked-up-again/c5183e21fe0253ea10c6659176f7dea9.jpg",
@@ -28,6 +29,7 @@ const Home = () => {
   return (
     <main className={styles.main}>
       <Slider data={carouselItems} />
+      <Search />
 
       <div className={styles.content}>
         <SliderWithNavigation id="1" />

@@ -7,6 +7,7 @@ import Catalog from "../pages/Catalog/CatalogReacl/Catalog.jsx";
 import AddContent from "../pages/AddContent/AddContent.jsx";
 import Marks from "../pages/marks/Marks.jsx";
 import Single from "../pages/Single/Single.jsx";
+import Register from "../components/SingIn/Auth/Register.jsx"
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: "manga/:id",
         element: <Single />,
+      },
+      {
+        path: "auth",
+        element: <Register />,
       },
     ],
   },

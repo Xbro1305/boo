@@ -9,4 +9,4 @@ export const reCount = (state = 3, action) => {
   }
 };
 
-export const acCount = (payload) => ({ type: "INC", payload });
+export const acCount = () => ({ type: "INC" });

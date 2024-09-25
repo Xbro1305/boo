@@ -16,7 +16,6 @@ export const LastUpdates = ({ id }) => {
     bool ? { display: "flex" } : { display: "none" }
   );
   const [sw, setSwitch] = useState(false);
-  console.log(sw);
 
   useEffect(() => {
     setStyle(bool ? { display: "flex" } : { display: "none" });
