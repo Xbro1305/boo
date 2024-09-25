@@ -1,4 +1,4 @@
-export const reMenu = (state = true, action) => {
+export const reMenu = (state = false, action) => {
   switch (action.type) {
     case "MENU":
       return !state;
