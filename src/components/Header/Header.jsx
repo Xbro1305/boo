@@ -1,82 +1,54 @@
-import React from "react";
-import "./Header.scss";
+// import './Search.scss';
 
-import Logotype from "../Logotype/Logotype.jsx";
-import { Link } from "react-router-dom";
-import omg from "../../as/images.jpeg";
-import { acMenu } from "../../redux/menu/menu.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import styles from "./Search.module.scss";
+import { acMenu } from "../../redux/menu/menu";
 
-function Header() {
-  const login = true;
+function Search() {
   const dispatch = useDispatch();
+  const st = useSelector((state) => state.reMenu);
+
   return (
     <>
-      <header className="header _container">
-        <section className="header__wrapper">
-          <section className="header__left">
-            <Link to={"/"}>
-              <Logotype />
-            </Link>
-            <nav className="header__nav nav">
-              <ul className="nav__list">
-                <li className="nav__item">
-                  <Link to={"catalog"}>Каталог</Link>
-                </li>
-                <li className="nav__item">
-                  <Link to={"addContent"}>Топы</Link>
-                </li>
-                <li className="nav__item">Форум</li>
-                <li className="nav__item" onClick={() => dispatch(acMenu())}>
-                  <svg viewBox="0 0 50 50" width="11px" height="11px">
-                    <path d="M21,3C11.6,3,4,10.6,4,20s7.6,17,17,17s17-7.6,17-17S30.4,3,21,3z M21,33c-7.2,0-13-5.8-13-13c0-7.2,5.8-13,13-13c7.2,0,13,5.8,13,13C34,27.2,28.2,33,21,33z" />
-                    <line
-                      fill="none"
-                      stroke="#000000"
-                      strokeWidth="6"
-                      strokeMiterlimit="10"
-                      x1="31.2"
-                      y1="31.2"
-                      x2="44.5"
-                      y2="44.5"
-                    />
-                  </svg>
-                  Поиск
-                </li>
-              </ul>
-            </nav>
-          </section>
-          <section className="header__right">
-            <Link to={"marks"} className="header__marks" href="#">
-              Закладки
-            </Link>
-            <div className="header__themes themes">
-              <div className="themes__indicator"></div>
-              <div className="themes__icon-container">
-                <i className="themes__icon fa-solid fa-sun"></i>
-              </div>
-            </div>
-            <div className="header__settings">
-              <svg
-                className="SvgIcon_root__n_a0S"
-                focusable="false"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                aria-label="Preferences"
-              >
-                <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"></path>
+      <section
+        className={styles.search}
+        style={{ display: st ? "flex" : "none" }}
+      >
+        <section className={styles.search__wrapper}>
+          <form action="#" className={styles.search__form}>
+            <a href="" className={styles.search__btn}>
+              <svg focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
               </svg>
-            </div>
-            {login ? (
-              <img src={omg} alt="" />
-            ) : (
-              <button className="header__blue-button">Войти</button>
-            )}
-          </section>
+            </a>
+            <input type="text" placeholder="Что ищем, семпай?" />
+            <a
+              href="#"
+              className={styles.search__btn_close}
+              onClick={() => dispatch(acMenu())}
+            >
+              <svg focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+              </svg>
+            </a>
+          </form>
+          <div className={styles.search__popularsearch}>
+            <p>Часто ищут</p>
+          </div>
+          <button className={styles.search__popular_btn}>
+            Секс ради выживания!
+          </button>
+          <button className={styles.search__popular_btn}>
+            Магическая битва
+          </button>
+          <button className={styles.search__popular_btn}>Башня бога</button>
+          <button className={styles.search__popular_btn}>
+            Хуйня из под коня
+          </button>
         </section>
-      </header>
+      </section>
     </>
   );
 }
 
-export default Header;
+export default Search;
